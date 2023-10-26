@@ -47,7 +47,7 @@
     #btnA {
         font-size: 20px;
         position:absolute; top:380px; left:2%; width:43%; height:60px; 
-        background-color: yellow;
+        background-color: pink;
         color: green;
     }
     
@@ -76,7 +76,7 @@
     }
 
     button{
-        color: blue;
+        color:brown;
         font-family: Times;
         border-radius: 20px;
     }
