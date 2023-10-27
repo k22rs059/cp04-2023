@@ -38,6 +38,9 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
         init();
     });
     
@@ -153,6 +156,9 @@
     var active = false;
     var startTime = 0;
     var period = 0;
+   // var thisTime = 0;
+   // var thisrest = period;
+    //var stopTime = 0;
 
 
     
@@ -161,6 +167,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
         
     }
 
@@ -172,6 +179,7 @@
         img.src = "ksuisbg.gif";
         img.onload = function(){
           ctx.drawImage(img,0,0,300,300);
+
         };
 
         var audio = new Audio();
@@ -190,8 +198,13 @@
     function btnBClick(e){
         if(active == true){
         active = false;
+        //thisTime = new Data();
+        //period = thisrest;
         }else if (active == false){
-            active = true;
+          //  active = true;
+            
+            //startTime = thisTime;
+           //thisrest = rest;
         }
         
     }
@@ -205,11 +218,18 @@
         $("#remain").html("残り時間：" + period);
     }
     
+    // ButtonDがクリックされた時の処理
+    function btnDClick(e){
+        if(active == false){
+        active = true;
+        }
+        
+    }
  
     // 繰り返し実行する処理
     function timer(){  
         if(active){
-          var time = parseInt( (new Date() - startTime)/1000 );
+          var time = parseInt( (new Date() - startTime )/1000 );
           var rest = period - time;
           var m = parseInt(rest/60);
           var s = parseInt(rest - m*60);
@@ -221,12 +241,16 @@
             alarm();
           }
         }
+     //   else if (active == false){
+       //    stopTime = parseInt( (new Date() - tihsTime)/1000 );
+        //}
     } 
 
   </script>
 </head>
 <body>
     <canvas id="mycanvas" width="300" height="300">Test</canvas>
+    <canvas2 id="mycanvas2" width="300" height="300">Test</canvas>
 
     <div id="minuteStr">〇</div>
     <div id="secondStr">〇</div>
@@ -234,8 +258,9 @@
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
     <button id="btnA">Start</button>  
-    <button id="btnB">Stop/ReStart</button>  
-    <button id="btnC">Set</button>  
+    <button id="btnB">Stop</button>  
+    <button id="btnC">Set</button> 
+    <button id="btnD">ReStart</button> 
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
